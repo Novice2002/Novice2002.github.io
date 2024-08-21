@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .carousel {
+  position: relative;
+  width: 600px; /* 可以根据需要调整宽度 */
+  overflow: hidden;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slides img {
+  width: 100%;
+  height: auto;
+}
+    </style>
+</head>
+<body>
+    <div class="carousel">
+  <div class="slides">
+    <img src="image.png" alt="Image 1">
+    <img src="image2.png" alt="Image 2">
+  </div>
+</div>
+<script>
+    const slides = document.querySelector('.slides');
+const images = document.querySelectorAll('.slides img');
+let currentIndex = 0;
+
+function moveToNext() {
+  currentIndex = (currentIndex + 1) % images.length;
+  const translateXValue = -currentIndex * 100; // 假设每张图片宽度相同
+  slides.style.transform = `translateX(${translateXValue}%)`;
+}
+
+// 自动播放
+setInterval(moveToNext, 3000); // 每3秒切换一次
+</script>
+</body>
+</html>
